@@ -11,6 +11,11 @@ const getAll = async function() {
 
 const getById = async function(id) {
     const userData = await userRepository.getById(id);
+
+    if(!userData) {
+        return createError(404, 'User not found');
+    }
+
     return userData;
 }
 
