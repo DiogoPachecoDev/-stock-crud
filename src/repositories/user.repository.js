@@ -1,6 +1,11 @@
 const db = require('../database/models/index');
 const { User } = require('../database/models/index');
 
+const getAll = async function() {
+    const usersList = await User.findAll();
+    return usersList;
+}
+
 const getById = async function(id) {
     const userData = await User.findByPk(id);
     return userData;
@@ -12,6 +17,7 @@ const create = async function(user) {
 }
 
 module.exports = {
+    getAll,
     getById,
     create
 }
