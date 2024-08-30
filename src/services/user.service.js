@@ -1,3 +1,4 @@
+const createError = require('http-errors');
 require('dotenv').config();
 
 const userRepository = require('../repositories/user.repository');
@@ -14,8 +15,15 @@ const getById = async function(id) {
 }
 
 const create = async function(user) {
+    const duplicateUser = await userRepository.getByFilter({ email: user.email });
+
+    if(duplicateUser) {
+        return createError(409, 'There is already a user with this email')
+    }
+
     user.password = await bcrypt.hash(user.password, ~~process.env.SALT);
     const userCreated = await userRepository.create(user);
+
     return userCreated;
 }
 

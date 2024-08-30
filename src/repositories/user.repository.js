@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const db = require('../database/models/index');
 const { User } = require('../database/models/index');
 
@@ -11,6 +12,11 @@ const getById = async function(id) {
     return userData;
 }
 
+const getByFilter = async function(filter) {
+    const userData = await User.findOne({ where: filter });
+    return userData;
+}
+
 const create = async function(user) {
     const userCreated = await User.create(user);
     return userCreated;
@@ -19,5 +25,6 @@ const create = async function(user) {
 module.exports = {
     getAll,
     getById,
+    getByFilter,
     create
 }
