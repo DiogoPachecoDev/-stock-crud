@@ -1,7 +1,7 @@
 const { verify } = require('jsonwebtoken');
 require('dotenv').config();
 
-const handleAuthorization = function(req, res , next) {
+const handleAuthorization = function(req, res, next) {
     const token = req.headers['token'];
 
     if(!token) {
