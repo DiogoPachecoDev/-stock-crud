@@ -30,6 +30,5 @@ module.exports = {
     create,
     getById,
     update,
-    destroy,
-    login
+    destroy
 }
