@@ -70,7 +70,7 @@ const login = async function(user) {
         return createError(401, 'Incorrect credentials');
     }
     
-    const token = sign({ id: userCredentials.id }, process.env.SECRET, { expiresIn: 60 });
+    const token = sign({ id: userCredentials.id }, process.env.SECRET, { expiresIn: 1000 });
 
     delete userCredentials.dataValues.password;
 
