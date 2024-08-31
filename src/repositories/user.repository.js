@@ -1,5 +1,3 @@
-const { where } = require('sequelize');
-const db = require('../database/models/index');
 const { User } = require('../database/models/index');
 
 const getAll = async function() {
