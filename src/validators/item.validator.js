@@ -9,8 +9,7 @@ const getById = function() {
 
 const create = function() {
     return [
-        body('name', validatorMessage('name')).exists().bail().isString(),
-        param('user_id', validatorMessage('user_id')).exists().bail().isInt()
+        body('name', validatorMessage('name')).exists().bail().isString()
     ]
 }
 
