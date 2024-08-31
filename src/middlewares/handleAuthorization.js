@@ -13,7 +13,7 @@ const handleAuthorization = function(req, res , next) {
             return res.status(401).send(['Unauthorized user']);
         }
 
-        req.id = decoded.id;
+        req.user_id = decoded.id;
 
         next();
     })
