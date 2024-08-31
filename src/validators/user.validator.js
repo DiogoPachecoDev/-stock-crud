@@ -28,9 +28,17 @@ const destroy = function() {
     ]
 }
 
+const login = function() {
+    return [
+        body('email', validatorMessage('email')).exists().bail().isString(),
+        body('password', validatorMessage('password')).exists().bail().isString()
+    ]
+}
+
 module.exports = {
     create,
     getById,
     update,
-    destroy
+    destroy,
+    login
 }
