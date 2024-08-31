@@ -1,9 +1,8 @@
-const createError = require('http-errors');
-require('dotenv').config();
-
 const userRepository = require('../repositories/user.repository');
+const createError = require('http-errors');
 const bcrypt = require('bcrypt');
 const { sign } = require('jsonwebtoken');
+require('dotenv').config();
 
 const getAll = async function() {
     const userList = await userRepository.getAll();
