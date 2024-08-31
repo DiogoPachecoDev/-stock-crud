@@ -45,9 +45,22 @@ const update = async function(user, id) {
     return userUpdated;
 }
 
+const destroy = async function(id) {
+    const existsUser = await userRepository.getById(id);
+
+    if(!existsUser) {
+        return createError(404, 'User not found');
+    }
+
+    await userRepository.destroy(id);
+
+    return existsUser;
+}
+
 module.exports = {
     getAll,
     getById,
     create,
-    update
+    update,
+    destroy
 }

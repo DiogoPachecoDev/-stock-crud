@@ -27,10 +27,16 @@ const update = async function(user, id) {
     return userUpdated;
 }
 
+const destroy = async function(id) {
+    const userDestroyed = await User.destroy({ where: { id: id } });
+    return userDestroyed;
+}
+
 module.exports = {
     getAll,
     getById,
     getByFilter,
     create,
-    update
+    update,
+    destroy
 }

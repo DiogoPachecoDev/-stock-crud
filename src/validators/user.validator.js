@@ -22,8 +22,15 @@ const update = function() {
     ]
 }
 
+const destroy = function() {
+    return [
+        param('id', validatorMessage('id')).exists().bail().isInt()
+    ]
+}
+
 module.exports = {
     create,
     getById,
-    update
+    update,
+    destroy
 }

@@ -7,5 +7,6 @@ router.get('/', userController.getAll);
 router.get('/:id', userValidator.getById(), userController.getById);
 router.post('/', userValidator.create(), userController.create);
 router.put('/:id', userValidator.update(), userController.update);
+router.delete('/:id', userValidator.destroy(), userController.destroy);
 
 module.exports = router;
