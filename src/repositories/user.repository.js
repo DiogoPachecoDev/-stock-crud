@@ -22,9 +22,15 @@ const create = async function(user) {
     return userCreated;
 }
 
+const update = async function(user, id) {
+    const userUpdated = await User.update(user, { where: { id: id } });
+    return userUpdated;
+}
+
 module.exports = {
     getAll,
     getById,
     getByFilter,
-    create
+    create,
+    update
 }

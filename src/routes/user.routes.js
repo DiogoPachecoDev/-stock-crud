@@ -6,5 +6,6 @@ const userValidator = require('../validators/user.validator');
 router.get('/', userController.getAll);
 router.get('/:id', userValidator.getById(), userController.getById);
 router.post('/', userValidator.create(), userController.create);
+router.put('/:id', userValidator.update(), userController.update);
 
 module.exports = router;
