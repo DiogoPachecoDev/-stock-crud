@@ -1,4 +1,6 @@
+const { validationResult } = require('express-validator');
 const userService = require('../services/user.service');
+const createErrors = require('http-errors');
 
 const getAll = async function(req, res, next) {
     try {
@@ -16,6 +18,12 @@ const getAll = async function(req, res, next) {
 
 const getById = async function(req, res, next) {
     try {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()) {
+            throw createErrors(422, { errors: errors.array() })
+        }
+
         const response = await userService.getById(req.params.id);
 
         if(response && response.message) {
@@ -30,6 +38,12 @@ const getById = async function(req, res, next) {
 
 const create = async function(req, res, next) {
     try {
+        const errors = validationResult(req);
+
+        if(!errors.isEmpty()) {
+            throw createErrors(422, { errors: errors.array() })
+        }
+
         const response = await userService.create(req.body);
 
         if(response && response.message) {

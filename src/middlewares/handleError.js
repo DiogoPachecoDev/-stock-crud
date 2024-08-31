@@ -1,6 +1,6 @@
 function mountError(error) {
     if(error.errors) {
-        return error.errors.map(err => err.message);
+        return error.errors.map(err => err.message || err.msg);
     }
 
     if(error.message) {
