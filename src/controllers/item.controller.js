@@ -65,8 +65,8 @@ const update = async function(req, res, next) {
         if(response && response.message) {
             throw response;
         }
-
-        res.status(204).send(response);
+        
+        res.status(200).send(response);
     } catch (error) {
         return next(error);
     }
