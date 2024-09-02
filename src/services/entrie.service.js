@@ -1,6 +1,6 @@
 const createError = require('http-errors');
 const entrieRepository = require('../repositories/entrie.repository');
-const itemRepository = require('../repositories/item.repository');s
+const itemRepository = require('../repositories/item.repository');
 
 const getAll = async function() {
     const entrieList = await entrieRepository.getAll();
