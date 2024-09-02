@@ -15,7 +15,8 @@ const create = function() {
 
 const update = function() {
     return [
-        body('name', validatorMessage('name')).exists().bail().isString(),
+        param('id', validatorMessage('id')).exists().bail().isInt(),
+        body('name', validatorMessage('name')).exists().bail().isString()
     ]
 }
 
