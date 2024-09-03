@@ -1,12 +1,12 @@
 const { Entrie, Item, User } = require('../database/models/index');
 
 const getAll = async function() {
-    const entriesList = await Entrie.findAll([{
+    const entriesList = await Entrie.findAll({
         include: [
             { model: Item, as: 'item' }, 
             { model: User, as: 'user' }
         ]
-    }]);
+    });
     return entriesList;
 }
 
