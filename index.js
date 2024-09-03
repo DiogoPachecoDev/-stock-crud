@@ -8,6 +8,7 @@ const itemRoute = require('./src/routes/item.routes');
 const userRoute = require('./src/routes/user.routes');
 const entrieRoute = require('./src/routes/entrie.routes');
 const exitRoute = require('./src/routes/exit.routes');
+const reportRoute = require('./src/routes/report.routes');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -16,6 +17,7 @@ app.use('/items', itemRoute);
 app.use('/users', userRoute);
 app.use('/entries', entrieRoute);
 app.use('/exits', exitRoute);
+app.use('/reports', reportRoute);
 
 app.use(handle404Error);
 app.use(handleError);
