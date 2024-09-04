@@ -44,7 +44,13 @@ const create = async function(req, res, next) {
             throw createErrors(422, { errors: errors.array() })
         }
 
-        const response = await entrieService.create({ quantity: req.body.quantity, price: req.body.price, item_id: req.body.item_id, user_id: req.user_id });
+        const response = await entrieService.create({ 
+            quantity: req.body.quantity, 
+            price: req.body.price, 
+            item_id: req.body.item_id, 
+            provider_id: req.body.provider_id, 
+            user_id: req.user_id
+        });
 
         if(response && response.message) {
             throw response;

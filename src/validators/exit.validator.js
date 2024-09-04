@@ -10,7 +10,7 @@ const getById = function() {
 const create = function() {
     return [
         body('quantity', validatorMessage('quantity')).exists().bail().isInt(),
-        body('item_id', validatorMessage('user_id')).exists().bail().isInt()
+        body('item_id', validatorMessage('item_id')).exists().bail().isInt()
     ]
 }
 

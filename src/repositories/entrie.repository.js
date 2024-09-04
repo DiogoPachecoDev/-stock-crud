@@ -1,10 +1,11 @@
-const { Entrie, Item, User } = require('../database/models/index');
+const { Entrie, Item, User, Provider } = require('../database/models/index');
 
 const getAll = async function() {
     const entriesList = await Entrie.findAll({
         include: [
             { model: Item, as: 'item' }, 
-            { model: User, as: 'user' }
+            { model: User, as: 'user' },
+            { model: Provider, as: 'provider' }
         ]
     });
     return entriesList;
@@ -20,7 +21,8 @@ const getByFilter = async function(filter) {
         where: filter,
         include: [
             { model: Item, as: 'item' }, 
-            { model: User, as: 'user' }
+            { model: User, as: 'user' },
+            { model: Provider, as: 'provider' }
         ]
     });
     return entrieData;

@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const entrieRepository = require('../repositories/entrie.repository');
 const itemRepository = require('../repositories/item.repository');
+const providerRepository = require('../repositories/provider.repository');
 
 const getAll = async function() {
     const entrieList = await entrieRepository.getAll();
@@ -18,10 +19,18 @@ const getById = async function(id) {
 }
 
 const create = async function(entrie) {
-    const existsItem = await itemRepository.getById(entrie.item_id)
+    const existsItem = await itemRepository.getById(entrie.item_id);
 
     if(!existsItem) {
         return createError(404, 'Item not exists');
+    }
+
+    if(entrie.provider_id) {
+        const existsProvider = await providerRepository.getById(entrie.provider_id);
+
+        if(!existsProvider) {
+            return createError(404, 'Item not exists');
+        }
     }
 
     const entrieCreated = await entrieRepository.create(entrie);
