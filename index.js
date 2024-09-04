@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const handleError = require('./src/middlewares/handleError');
 const handle404Error = require('./src/middlewares/handle404Error');
+const authRoute = require('./src/routes/auth.routes');
 const itemRoute = require('./src/routes/item.routes');
 const userRoute = require('./src/routes/user.routes');
 const entrieRoute = require('./src/routes/entrie.routes');
@@ -14,6 +15,7 @@ const reportRoute = require('./src/routes/report.routes');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use('/auth', authRoute);
 app.use('/items', itemRoute);
 app.use('/users', userRoute);
 app.use('/entries', entrieRoute);

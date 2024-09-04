@@ -1,7 +1,6 @@
 const userRepository = require('../repositories/user.repository');
 const createError = require('http-errors');
 const bcrypt = require('bcrypt');
-const { sign } = require('jsonwebtoken');
 require('dotenv').config();
 
 const getAll = async function() {
@@ -57,35 +56,10 @@ const destroy = async function(id) {
     return existsUser;
 }
 
-const login = async function(user) {
-    const userCredentials = await userRepository.getByFilter({ email: user.email });
-
-    if(!userCredentials) {
-        return createError(401, 'Incorrect credentials');
-    }
-
-    const validatePassword = await bcrypt.compare(user.password, userCredentials.password);
-
-    if(!validatePassword) {
-        return createError(401, 'Incorrect credentials');
-    }
-    
-    const token = sign({ id: userCredentials.id }, process.env.SECRET, { expiresIn: 1000 });
-
-    delete userCredentials.dataValues.password;
-
-    return {
-        auth: true,
-        token: token,
-        user: userCredentials
-    };
-}
-
 module.exports = {
     getAll,
     getById,
     create,
     update,
-    destroy,
-    login
+    destroy
 }
